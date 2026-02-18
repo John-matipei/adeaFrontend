@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Impact Stories | AdeaPmd CareerConnect</title>
+<style>
+  :root {
+    --primary: #c0392b;
+    --secondary: #f39c12;
+    --dark: #2c3e50;
+    --gray: #ecf0f1;
+  }
+
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body { font-family: "Segoe UI", Arial, sans-serif; background: var(--gray); color: #333; scroll-behavior: smooth; }
+
+  /* ===== NAV ===== */
+  nav {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  nav .logo { color: #fff; font-size: 24px; font-weight: bold; }
+  nav ul { list-style: none; display:flex; gap:25px; }
+  nav ul li a { color:#fff; text-decoration:none; font-weight:600; transition:0.3s; }
+  nav ul li a:hover { color:#2c3e50; }
+
+  /* Hamburger */
+  .hamburger {
+    display:none;
+    flex-direction: column;
+    cursor: pointer;
+    gap:5px;
+  }
+  .hamburger div { width:25px; height:3px; background:#fff; }
+
+  /* ===== HERO ===== */
+  .hero {
+  background-image: url("./image/pmd.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  min-height: 100vh;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: background-image 2s ease-in-out;
+}
+  .hero h1 { 
+    font-size: 48px;
+  margin-bottom: 15px;
+  z-index: 2;
+  position: relative;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+   }
+  .hero p { 
+    font-size: 20px;
+  max-width: 700px;
+  z-index: 2;
+  position: relative;
+   }
+
+  /* ===== MAIN ===== */
+  main { padding: 50px 20px; max-width: 1200px; margin:auto; }
+  h2 { text-align:center; font-size:36px; margin-bottom:40px; color: var(--dark); }
+
+  /* ===== GRID CARDS ===== */
+  .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap:30px; }
+  .card { background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 12px 30px rgba(0,0,0,0.1);
+          transition: transform 0.3s, box-shadow 0.3s; position: relative; opacity:0; transform: translateY(50px); animation: fadeUp 0.7s forwards; }
+  .card img { width:100%; height:200px; object-fit:cover; transition: transform 0.5s ease; }
+  .card:hover img { transform: scale(1.05); }
+  .card-content { padding:20px; }
+  .card-content h3 { color: var(--primary); font-size:22px; margin-bottom:10px; }
+  .card-content p { font-size:15px; color:#555; line-height:1.5; }
+  .meta { font-size:13px; color:#888; margin-top:10px; }
+  .card-content a { display:inline-block; margin-top:12px; color: var(--primary); font-weight:bold; text-decoration:none; transition:0.3s; }
+  .card-content a:hover { text-decoration: underline; }
+
+  /* EMPTY MESSAGE */
+  .empty { text-align:center; font-size:18px; color:#777; grid-column:1/-1; }
+
+  /* FOOTER */
+  footer { background: var(--dark); color:#fff; text-align:center; padding:25px; font-size:14px; }
+
+  /* ANIMATION */
+  @keyframes fadeUp { from {opacity:0; transform:translateY(50px);} to {opacity:1; transform:translateY(0);} }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:768px) {
+    .hamburger { display:flex; }
+
+    nav ul {
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      width: 200px;
+      padding: 15px;
+      border-radius: 0 0 10px 10px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      z-index: 999;
+    }
+
+    nav ul.show { max-height: 500px; }
+
+    nav ul li { margin:10px 0; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">AdeaPmd CareerConnect</div>
+
+  <!-- Hamburger -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <ul id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#stories">Impact Stories</a></li>
+    <li><a href="index.html">Opportunities</a></li>
+    <li><a href="index.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Behind Every Smile the is Impact Stories</h1>
+  <p>Showcasing the success, skills, and journeys of our talented culinary art graduates.</p>
+</div>
+
+<main>
+  <h2>🌟 Real Stories from Our Graduates</h2>
+  <div class="grid" id="storiesGrid">
+    <p class="empty">Loading stories...</p>
+  </div>
+</main>
+
+<footer>
+  © 2026 AdeaPmd CareerConnect | Empowering Culinary Talent
+</footer>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+// Load stories dynamically
+fetch("/api/posts")
+  .then(res => res.json())
+  .then(posts => {
+    const container = document.getElementById("storiesGrid");
+    container.innerHTML = "";
+
+    if(!posts || posts.length === 0){
+      container.innerHTML = "<p class='empty'>No stories posted yet.</p>";
+      return;
+    }
+
+    posts.reverse().forEach((post,index) => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.style.animationDelay = (index*0.1)+"s"; // stagger animation
+      card.innerHTML = `
+        ${post.media ? `<img src="${post.media}" alt="Story Image">` : ""}
+        <div class="card-content">
+          <h3>${post.title}</h3>
+          <p>${post.content.substring(0,150)}...</p>
+          <div class="meta">${post.type} • ${post.date}</div>
+          <a href="story.html?id=${post.id}">Read More →</a>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  })
+  .catch(err=>{
+    console.error(err);
+    document.getElementById("storiesGrid").innerHTML="<p class='empty'>Failed to load stories.</p>";
+  });
+</script>
+
+</body>
+</html>

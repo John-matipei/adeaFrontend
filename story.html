@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Story - AdeaPmd CareerConnect</title>
+  <style>
+    :root {
+      --primary: #c0392b;
+      --secondary: #f39c12;
+      --dark: #2c3e50;
+      --gray: #ecf0f1;
+    }
+
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family: "Segoe UI", Arial, sans-serif; background: var(--gray); color: #333; scroll-behavior: smooth; }
+
+    /* ===== NAV ===== */
+    nav {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      padding: 15px 40px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:1000;
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+    }
+    nav .logo { color:#fff; font-size:24px; font-weight:bold; }
+    nav ul { list-style:none; display:flex; gap:25px; }
+    nav ul li a { color:#fff; text-decoration:none; font-weight:600; }
+    nav ul li a:hover { color:#2c3e50; }
+
+    /* Hamburger */
+    .hamburger { display:none; flex-direction: column; cursor: pointer; gap:5px; }
+    .hamburger div { width:25px; height:3px; background:#fff; }
+
+    /* ===== STORY CONTENT ===== */
+    #story {
+      background: #fff;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    #story h2 {
+      font-size: 28px;
+      color: var(--primary);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    #story img, #story video {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 20px 0;
+      display: block;
+    }
+
+    #story p {
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: #555;
+    }
+
+    #story small {
+      display: block;
+      color: #888;
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width: 600px) {
+      body { padding: 10px; }
+      #story { padding: 15px; }
+      #story h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav>
+  <div class="logo">AdeaPmd CareerConnect</div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </div>
+  <ul id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="impact.html">Impact Stories</a></li>
+    <li><a href="#opportunities">Opportunities</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- <a href="impact.html" style="margin-left:40px; display:inline-block; margin-top:20px;">← Back to Impact Stories</a> -->
+
+<div id="story"></div>
+
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+// ===== LOAD SINGLE STORY =====
+fetch("/api/posts")
+  .then(res => res.json())
+  .then(posts => {
+    const idParam = new URLSearchParams(window.location.search).get("id");
+    const post = posts.find(p => String(p.id) === String(idParam));
+
+    if (!post) {
+      document.getElementById("story").innerHTML = "<p>Story not found.</p>";
+      return;
+    }
+
+    let mediaHTML = "";
+    if (post.media) {
+      if (post.media.endsWith(".mp4") || post.media.endsWith(".webm")) {
+        mediaHTML = `<video controls playsinline>
+                        <source src="${post.media}" type="video/mp4">
+                        Your browser does not support the video tag.
+                     </video>`;
+      } else {
+        mediaHTML = `<img src="${post.media}" alt="${post.title}">`;
+      }
+    }
+
+    document.getElementById("story").innerHTML = `
+      <h2>${post.title}</h2>
+      ${mediaHTML}
+      <p>${post.content}</p>
+      <small>${post.date}</small>
+    `;
+  })
+  .catch(err => {
+    console.error(err);
+    document.getElementById("story").innerHTML = "<p>Failed to load story.</p>";
+  });
+</script>
+
+</body>
+</html>

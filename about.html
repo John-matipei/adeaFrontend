@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About Us | AdeaPmd CareerConnect</title>
+
+<style>
+:root {
+  --primary: #c0392b;
+  --secondary: #f39c12;
+  --dark: #2c3e50;
+  --gray: #ecf0f1;
+}
+
+* { box-sizing: border-box; margin:0; padding:0; }
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--gray);
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+/* ===== NAV ===== */
+nav {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  padding: 15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+nav .logo { color:#fff; font-size:24px; font-weight:bold; }
+nav ul { list-style:none; display:flex; gap:25px; }
+nav ul li a { color:#fff; text-decoration:none; font-weight:600; }
+nav ul li a:hover { color:#2c3e50; }
+
+/* ===== HERO ===== */
+.about-hero {
+  background: url("./image/pmd.jpg") center/cover no-repeat;
+  min-height: 100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  color:#fff;
+  padding:20px;
+}
+
+.about-hero::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.55);
+}
+
+.about-hero div {
+  position:relative;
+  max-width:800px;
+}
+
+.about-hero h1 {
+  font-size:42px;
+  margin-bottom:15px;
+  font-weight:700;
+}
+
+.about-hero p {
+  font-size:18px;
+  line-height:1.6;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding:70px 20px;
+  max-width:1200px;
+  margin:auto;
+}
+
+section h2 {
+  text-align:center;
+  font-size:36px;
+  margin-bottom:40px;
+  color:var(--dark);
+}
+
+/* ===== ABOUT TEXT ===== */
+.about-text {
+  max-width:900px;
+  margin:auto;
+  font-size:17px;
+  line-height:1.8;
+  text-align:center;
+  color:#444;
+}
+
+/* ===== MISSION / VISION ===== */
+.mv {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+  margin-top:50px;
+}
+
+.mv .card {
+  background:#fff;
+  border-radius:20px;
+  padding:30px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mv .card:hover {
+  transform: translateY(-8px);
+  box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+.mv h3 {
+  margin-bottom:15px;
+  font-weight:700;
+  color:var(--primary);
+}
+
+/* ===== FEATURES ===== */
+.features {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  margin-top:40px;
+}
+
+.features .feature {
+  background:#fff;
+  border-radius:18px;
+  padding:25px;
+  text-align:center;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.features .feature:hover {
+  transform: translateY(-6px);
+  box-shadow:0 12px 30px rgba(0,0,0,0.12);
+}
+
+.features .feature h4 {
+  margin-bottom:10px;
+  font-weight:700;
+  color:var(--primary);
+}
+
+/* ===== TEAM ===== */
+.team {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+  margin-top:40px;
+}
+
+.member {
+  background:#fff;
+  border-radius:20px;
+  padding:20px;
+  text-align:center;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.member:hover {
+  transform: translateY(-6px);
+  box-shadow:0 12px 30px rgba(0,0,0,0.12);
+}
+
+.member img {
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:15px;
+}
+
+.member h4 {
+  color:var(--primary);
+  margin-bottom:5px;
+  font-weight:700;
+}
+
+/* ===== MANAGERS TESTIMONIALS ===== */
+.testimonials {
+  margin-top:60px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+
+.testimonial {
+  background:#fff;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial:hover {
+  transform: translateY(-6px);
+  box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+.testimonial h4 {
+  color:var(--primary);
+  margin-bottom:10px;
+  font-weight:700;
+}
+
+.testimonial p {
+  font-size:15px;
+  color:#555;
+  line-height:1.6;
+}
+
+/* ===== CTA ===== */
+.cta {
+  background:#fff;
+  border-radius:25px;
+  padding:50px 20px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  margin-top:50px;
+}
+
+.cta a {
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 30px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  color:#fff;
+  border-radius:10px;
+  font-weight:bold;
+  text-decoration:none;
+  transition: background 0.3s ease;
+}
+
+.cta a:hover {
+  background: linear-gradient(90deg, #2c3e50, var(--secondary));
+}
+
+/* ===== CONTACT ===== */
+form {
+  max-width:500px;
+  margin:auto;
+  background:#fff;
+  padding:30px;
+  border-radius:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+form input, form textarea {
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-size:15px;
+}
+
+form button {
+  width:100%;
+  padding:12px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+form button:hover {
+  background: linear-gradient(90deg,#2c3e50,var(--secondary));
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background:var(--dark);
+  color:#fff;
+  text-align:center;
+  padding:25px;
+  margin-top:50px;
+}
+.faq-item {
+  margin-bottom: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  background:#fff;
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: #fff;
+  transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+  background: linear-gradient(90deg, var(--secondary), var(--primary));
+}
+
+.faq-answer {
+  display: none;
+  padding: 15px 20px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+  background: #f9f9f9;
+}
+/* Hamburger */
+  .hamburger {
+    display:none;
+    flex-direction: column;
+    cursor: pointer;
+    gap:5px;
+  }
+  .hamburger div { width:25px; height:3px; background:#fff; }
+ /* ===== RESPONSIVE ===== */
+  @media (max-width:768px) {
+    .hamburger { display:flex; }
+    nav ul {
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background: linear-gradient(10deg, var(--primary), var(--secondary));
+      width: 200px;
+      padding: 15px;
+      border-radius: 0 0 10px 10px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      z-index: 999;
+    }
+    nav ul.show { max-height: 500px; }
+    nav ul li { margin: 10px 0; }
+
+    /* ===== HIDE LOGO TEXT ON SMALL SCREENS ===== */
+    .logo-container .logo {
+      display: none;
+    }
+  }
+  /* ===== LOGO ===== */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 15px;
+    /* background: rgba(255,255,255,0.1); */
+    border-radius: 12px;
+    /* box-shadow: 0 4px 10px rgba(0,0,0,0.2); */
+  }
+
+  .logo-container img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 20%;
+  }
+
+  .logo-container .logo {
+    color:#fff;
+    font-size:24px;
+    font-weight:bold;
+  }
+
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo-container">
+    <img src="./image/image.png" alt="Logo" />
+    <div class="logo">AdeaPmd CareerConnect</div>
+  </div>
+
+  <!-- Hamburger -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <ul id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="impact.html">Impact Stories</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="about-hero">
+  <div>
+    <h1>About AdeaPmd CareerConnect</h1>
+    <p>
+      We empower culinary arts graduates by transforming their skills into real-world opportunities, and we change students' lives through fees assistance and mentorship.
+    </p>
+  </div>
+</div>
+
+<!-- WHO WE ARE -->
+<section>
+  <h2>Who We Are</h2>
+  <p class="about-text">
+    AdeaPmd CareerConnect is dedicated to nurturing culinary talent and supporting students who may struggle financially.
+    Our mission goes beyond skills training—we help students pursue their dreams by providing financial assistance, mentorship, and career guidance.
+  </p>
+
+  <div class="mv">
+    <div class="card">
+      <h3>Our Mission</h3>
+      <p>
+        To connect culinary arts graduates with opportunities, mentorship, and financial support that transforms lives and turns passion into sustainable careers.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Our Vision</h3>
+      <p>
+        To be a leading career bridge for vocational graduates across Kenya and beyond, shaping confident professionals ready for the hospitality industry.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <h2>What Makes Us Different</h2>
+  <div class="features">
+    <div class="feature">
+      <h4>Skill-Focused</h4>
+      <p>We highlight practical skills and real abilities, not just certificates.</p>
+    </div>
+    <div class="feature">
+      <h4>Life-Changing Support</h4>
+      <p>We provide fee assistance to deserving students to help them continue their education.</p>
+    </div>
+    <div class="feature">
+      <h4>Job Connections</h4>
+      <p>Direct access to culinary job opportunities and internships.</p>
+    </div>
+    <div class="feature">
+      <h4>Mentorship</h4>
+      <p>Guidance from experienced trainers and industry professionals.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section>
+  <h2>Meet Our Team</h2>
+  <div class="team">
+    <div class="member">
+      <img src="./image/profile1.jpg" alt="">
+      <h4>Mr Douglas Mcfalls</h4>
+      <p>The Founder Adea</p>
+    </div>
+    <div class="member">
+      <img src="./image/profile2.jpg" alt="">
+      <h4>Mr Benedict</h4>
+      <p>The Director AdeaPmd</p>
+    </div>
+    <div class="member">
+      <img src="./image/profile3.jpg" alt="">
+      <h4>Mr Malei Mutegi</h4>
+      <p>The Manager AdeaPmd</p>
+    </div>
+  </div>
+</section>
+
+<!-- MANAGERS TESTIMONIALS -->
+<section>
+  <h2>What Managers Say About Our Students</h2>
+  <div class="testimonials">
+    <div class="testimonial">
+      <h4>Ms Grace Mwikali</h4>
+      <p>"The students from AdeaPmd are exceptionally skilled, disciplined, and always ready to contribute positively to the hospitality industry."</p>
+    </div>
+    <div class="testimonial">
+      <h4>Mr James Otieno</h4>
+      <p>"Every graduate we hire from AdeaPmd has consistently exceeded expectations. Their practical skills and work ethic are outstanding."</p>
+    </div>
+    <div class="testimonial">
+      <h4>Ms Angela Kariuki</h4>
+      <p>"AdeaPmd graduates are well-prepared, confident, and show remarkable creativity in culinary tasks. They are an asset to any kitchen."</p>
+    </div>
+  </div>
+</section>
+<!-- FAQ -->
+ <!-- FAQ -->
+<section>
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq">
+    <div class="faq-item">
+      <button class="faq-question">Q1: Who can apply to AdeaPmd CareerConnect?</button>
+      <div class="faq-answer">
+        <p>Any graduate or student passionate about culinary arts and seeking mentorship, financial support, and job opportunities.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Q2: How do students get financial assistance?</button>
+      <div class="faq-answer">
+        <p>Students can apply through our scholarship programs and fee support initiatives designed to help deserving candidates.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Q3: Are there internship opportunities?</button>
+      <div class="faq-answer">
+        <p>Yes, we connect students with real-world culinary internships and job opportunities to gain practical experience.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Q4: Can alumni stay in touch for mentorship?</button>
+      <div class="faq-answer">
+        <p>Absolutely! We encourage past students to mentor new students and contribute to our community network.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section>
+  <div class="cta">
+    <h2>Support Students and Change Lives</h2>
+    <p>
+      If AdeaPmd's mission touches you, you can help transform students' futures by supporting their education.
+    </p>
+    <a href="https://wa.me/254700000000" target="_blank" >Support & Contact Us</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 AdeaPmd CareerConnect | Empowering Culinary Talent
+</footer>
+<script>
+  document.querySelectorAll(".faq-question").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const answer = btn.nextElementSibling;
+    answer.style.display = answer.style.display === "block" ? "none" : "block";
+  });
+});
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("show");
+}
+</script>
+</body>
+</html>
