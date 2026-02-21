@@ -1,84 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Story - AdeaPmd CareerConnect</title>
-  <style>
-    :root {
-      --primary: #c0392b;
-      --secondary: #f39c12;
-      --dark: #2c3e50;
-      --gray: #ecf0f1;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Story - AdeaPmd CareerConnect</title>
+<style>
+:root {
+  --primary: #c0392b;
+  --secondary: #f39c12;
+  --dark: #2c3e50;
+  --gray: #ecf0f1;
+}
 
-    * { box-sizing: border-box; margin:0; padding:0; }
-    body { font-family: "Segoe UI", Arial, sans-serif; background: var(--gray); color: #333; scroll-behavior: smooth; }
+* { box-sizing: border-box; margin:0; padding:0; }
+body { font-family: "Segoe UI", Arial, sans-serif; background: var(--gray); color: #333; scroll-behavior: smooth; }
 
-    /* ===== NAV ===== */
-    nav {
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      padding: 15px 40px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:sticky;
-      top:0;
-      z-index:1000;
-      box-shadow:0 4px 12px rgba(0,0,0,0.2);
-    }
-    nav .logo { color:#fff; font-size:24px; font-weight:bold; }
-    nav ul { list-style:none; display:flex; gap:25px; }
-    nav ul li a { color:#fff; text-decoration:none; font-weight:600; }
-    nav ul li a:hover { color:#2c3e50; }
+/* ===== NAV ===== */
+nav {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  padding: 15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+nav .logo { color:#fff; font-size:24px; font-weight:bold; }
+nav ul {
+  list-style:none;
+  display:flex;
+  gap:25px;
+  transition: max-height 0.3s ease;
+}
+nav ul li a { color:#fff; text-decoration:none; font-weight:600; }
+nav ul li a:hover { color:#2c3e50; }
 
-    /* Hamburger */
-    .hamburger { display:none; flex-direction: column; cursor: pointer; gap:5px; }
-    .hamburger div { width:25px; height:3px; background:#fff; }
+/* ===== HAMBURGER ===== */
+.hamburger { display:none; flex-direction: column; cursor: pointer; gap:5px; }
+.hamburger div { width:25px; height:3px; background:#fff; }
 
-    /* ===== STORY CONTENT ===== */
-    #story {
-      background: #fff;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    }
+/* ===== STORY CONTENT ===== */
+#story {
+  background: #fff;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+#story h2 {
+  font-size: 28px;
+  color: var(--primary);
+  margin-bottom: 15px;
+  text-align: center;
+}
+#story img, #story video {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 20px 0;
+  display: block;
+}
+#story p { font-size: 16px; margin-bottom: 15px; color: #555; }
+#story small { display: block; color: #888; margin-top: 20px; text-align: right; }
 
-    #story h2 {
-      font-size: 28px;
-      color: var(--primary);
-      margin-bottom: 15px;
-      text-align: center;
-    }
+/* ===== RESPONSIVE ===== */
+@media(max-width: 768px) {
+  .hamburger { display:flex; }
+  nav ul {
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: linear-gradient(10deg, var(--primary), var(--secondary));
+    width: 200px;
+    padding: 15px;
+    border-radius: 0 0 10px 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    z-index: 999;
+  }
+  nav ul.show { max-height: 500px; }
+  nav ul li { margin:10px 0; }
+}
 
-    #story img, #story video {
-      max-width: 100%;
-      border-radius: 12px;
-      margin: 20px 0;
-      display: block;
-    }
-
-    #story p {
-      font-size: 16px;
-      margin-bottom: 15px;
-      color: #555;
-    }
-
-    #story small {
-      display: block;
-      color: #888;
-      margin-top: 20px;
-      text-align: right;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media(max-width: 600px) {
-      body { padding: 10px; }
-      #story { padding: 15px; }
-      #story h2 { font-size: 22px; }
-    }
-  </style>
+@media(max-width: 600px) {
+  body { padding: 10px; }
+  #story { padding: 15px; }
+  #story h2 { font-size: 22px; }
+}
+</style>
 </head>
 <body>
 
@@ -96,8 +109,6 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
-
-<!-- <a href="impact.html" style="margin-left:40px; display:inline-block; margin-top:20px;">← Back to Impact Stories</a> -->
 
 <div id="story"></div>
 
