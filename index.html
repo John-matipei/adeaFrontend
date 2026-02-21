@@ -27,15 +27,12 @@
     box-shadow:0 4px 12px rgba(0,0,0,0.2);
   }
 
-  /* ===== LOGO ===== */
   .logo-container {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 5px 15px;
-    /* background: rgba(255,255,255,0.1); */
     border-radius: 12px;
-    /* box-shadow: 0 4px 10px rgba(0,0,0,0.2); */
   }
 
   .logo-container img {
@@ -59,7 +56,6 @@
   nav ul li a { color:#fff; text-decoration:none; font-weight:600; }
   nav ul li a:hover { color:#2c3e50; }
 
-  /* Hamburger */
   .hamburger {
     display:none;
     flex-direction: column;
@@ -146,7 +142,6 @@
     nav ul.show { max-height: 500px; }
     nav ul li { margin: 10px 0; }
 
-    /* ===== HIDE LOGO TEXT ON SMALL SCREENS ===== */
     .logo-container .logo {
       display: none;
     }
@@ -254,24 +249,23 @@
   </form>
 </section>
 
-
-
 <footer>
   © 2026 AdeaPmd CareerConnect | Empowering Culinary Talent
 </footer>
+
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
 (function() {
-   emailjs.init("ou9kOt9Zz8gVExA4f"); // Your EmailJS User ID
+   emailjs.init("ou9kOt9Zz8gVExA4f");
 })();
 
 document.getElementById("contactForm").addEventListener("submit", function(event){
     event.preventDefault();
 
-    emailjs.sendForm("service_lkpo65i", "template_9hsek1j", this) // Use correct Gmail Service ID
+    emailjs.sendForm("service_lkpo65i", "template_9hsek1j", this)
       .then(function() {
         alert("Message sent successfully!");
-        document.getElementById("contactForm").reset(); // Reset form after success
+        document.getElementById("contactForm").reset();
       }, function(error) {
         alert("Failed to send message. Please try again.");
         console.error("EmailJS Error:", error);
@@ -279,14 +273,13 @@ document.getElementById("contactForm").addEventListener("submit", function(event
 });
 </script>
 
-
-
 <script>
 function toggleMenu() {
   document.getElementById("navLinks").classList.toggle("show");
 }
 
-const API_BASE = "http://localhost:4000";
+// ===== UPDATED API BASE =====
+const API_BASE = "https://adeaadmin.onrender.com";
 
 // ===== LOAD STORIES =====
 async function loadStories() {
@@ -365,7 +358,7 @@ async function loadJobs() {
   }
 }
 
-// ===== HERO CAROUSEL (UNCHANGED) =====
+// ===== HERO CAROUSEL =====
 const hero = document.querySelector(".hero");
 const heroImages = [
   "./image/std.jpg",
@@ -391,8 +384,6 @@ setInterval(changeHero, 6000);
 loadStories();
 loadJobs();
 </script>
-
-
 
 </body>
 </html>
