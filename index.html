@@ -11,7 +11,6 @@
     --dark: #2c3e50;
     --gray: #ecf0f1;
   }
-
   * { box-sizing: border-box; margin:0; padding:0; }
   body { font-family: "Segoe UI", Arial, sans-serif; background: var(--gray); color: #333; scroll-behavior: smooth; }
 
@@ -27,97 +26,88 @@
     z-index:1000;
     box-shadow:0 4px 12px rgba(0,0,0,0.2);
   }
-
-  .logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 5px 15px;
-    border-radius: 12px;
-  }
-
-  .logo-container img { width:60px; height:60px; object-fit:contain; border-radius:20%; }
+  .logo-container { display: flex; align-items: center; gap: 10px; padding: 5px 15px; border-radius: 12px; }
+  .logo-container img { width: 60px; height: 60px; object-fit: contain; border-radius: 20%; }
   .logo-container .logo { color:#fff; font-size:24px; font-weight:bold; }
-
   nav ul { list-style:none; display:flex; gap:25px; }
   nav ul li a { color:#fff; text-decoration:none; font-weight:600; }
   nav ul li a:hover { color:#2c3e50; }
-
   .hamburger { display:none; flex-direction: column; cursor: pointer; gap:5px; }
   .hamburger div { width:25px; height:3px; background:#fff; }
 
   /* ===== HERO ===== */
 .hero {
   background-image: url("./image/pmd.jpg");
-  background-repeat:no-repeat;
-  background-position:center;
-  background-size:cover;
-  width:100%;
-  min-height:100vh;
-  color:#fff;
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-  position:relative;
-  overflow:hidden;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  min-height: 100vh;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: background-image 2s ease-in-out;
 }
 .hero::before {
   content: "";
-  position:absolute;
-  inset:0;
+  position: absolute;
+  inset: 0;
   background: rgba(0,0,0,0.45);
-  z-index:1;
+  z-index: 1;
 }
-.hero h1 { font-size:20px; margin-bottom:15px; z-index:2; position:relative; text-shadow:2px 2px 6px rgba(0,0,0,0.7); }
-.hero p { font-size:20px; max-width:700px; z-index:2; position:relative; }
+.hero h1, .hero p { position: relative; z-index:2; text-shadow: 2px 2px 6px rgba(0,0,0,0.7); }
 
   /* ===== SECTIONS ===== */
   section { padding:70px 20px; max-width:1200px; margin:auto; }
   h2 { text-align:center; font-size:36px; margin-bottom:40px; color:var(--dark); }
   #storiesGrid { display:grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
-  #storiesGrid .card { background:#fff; border-radius:15px; padding:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1); position: relative; }
+  #storiesGrid .card { background:#fff; border-radius:15px; padding:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1); }
   #storiesGrid .card img, #storiesGrid .card video { width:100%; height:180px; object-fit:cover; border-radius:12px; margin-bottom:15px; }
   #storiesGrid .card video { outline:none; }
   #storiesGrid .card h3 { margin-top:0; color: var(--primary); font-size:20px; }
   #storiesGrid .card p { font-size:14px; color:#555; }
   #storiesGrid .card a { display:inline-block; margin-top:10px; color: var(--primary); font-weight:bold; text-decoration:none; }
-  #storiesGrid .card button.delete-btn { position:absolute; top:10px; right:10px; background:red; color:#fff; border:none; padding:5px 10px; border-radius:5px; cursor:pointer; font-size:12px; }
 
-  .btn { padding:6px 12px; margin:0.5em; background-color:orange; color:#000; font-weight:bold; border-radius:5px; border:none; text-decoration:none; }
-  .btn a{ text-decoration:none; }
-  .btn:hover{ background-color:green; color:white; transition:.3s; }
+  .jobs, .tips { flex:1; min-width:300px; max-width:500px; background:#fff; border-radius:20px; padding:25px; box-shadow:0 10px 25px rgba(218, 25, 25, 0.1); }
+  .jobs ul { list-style:none; padding:0; margin:0; max-height:400px; overflow-y:auto; }
+  .jobs li { margin-bottom:15px; padding:10px; border-radius:10px; background:linear-gradient(90deg,#f39c12,#f1c40f); color:#fff; display:flex; justify-content:flex-start; align-items:center; }
+  .jobs li a { color:#fff; text-decoration:none; font-weight:600; }
+  .tips ol { padding-left:20px; color:#555; font-size:15px; line-height:1.8; }
+
+  form { max-width:500px; margin:auto; background:#fff; padding:30px; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.1); }
+  form input, form textarea { width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ccc; font-size:15px; }
+  form button { width:100%; padding:12px; background:linear-gradient(90deg,var(--primary),var(--secondary)); color:#fff; border:none; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer; }
 
   footer { background: var(--dark); color:#fff; text-align:center; padding:25px; font-size:14px; }
-
-  /* ALERT MESSAGE */
-  #alertMsg { position:fixed;top:20px;right:20px;background:green;color:#fff;padding:10px;border-radius:5px;display:none; z-index:9999; }
 
   /* ===== RESPONSIVE ===== */
   @media (max-width:768px) {
     .hamburger { display:flex; }
-    nav ul { flex-direction: column; position:absolute; top:60px; right:0; background:linear-gradient(10deg,var(--primary),var(--secondary)); width:200px; padding:15px; border-radius:0 0 10px 10px; max-height:0; overflow:hidden; transition:max-height 0.3s ease; z-index:999; }
-    nav ul.show { max-height:500px; }
-    nav ul li { margin:10px 0; }
-    .logo-container .logo { display:none; }
+    nav ul { flex-direction: column; position: absolute; top: 60px; right: 0; background: linear-gradient(10deg, var(--primary), var(--secondary)); width: 200px; padding: 15px; border-radius: 0 0 10px 10px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; z-index: 999; }
+    nav ul.show { max-height: 500px; }
+    nav ul li { margin: 10px 0; }
+    .logo-container .logo { display: none; }
   }
+
+  .btn{ padding: 6px 12px; margin: 0.5em; background-color: orange; color: #000; font-weight: bold; border-radius: 5px; border: none; text-decoration: none; }
+  .btn a{ text-decoration: none; }
+  .btn:hover{ background-color: green; color: white; transition: .3s; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="logo-container">
     <img src="./image/image.png" alt="Logo" />
     <div class="logo">AdeaPmd CareerConnect</div>
   </div>
-  <div class="hamburger" onclick="toggleMenu()">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>    
+  <div class="hamburger" onclick="toggleMenu()"><div></div><div></div><div></div></div>
   <ul id="navLinks">
     <li><a href="#home">Home</a></li>
     <li><a href="about.html">About Us</a></li>
@@ -126,18 +116,12 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <div class="hero" id="home">
-  <h1>
-  Empowering Culinary Talent, Transforming Lives.
-  Welcome to AdeaPmd CareerConnect – where skills meet opportunity, and dreams overcome barriers.
-  </h1>
-  <p>
-  We nurture culinary excellence while supporting students financially and professionally, connecting them to real-world opportunities, inspiring impact stories, and a future full of possibilities.
-  </p>
+  <h1>Empowering Culinary Talent, Transforming Lives.<br>
+  Welcome to AdeaPmd CareerConnect – where skills meet opportunity, and dreams overcome barriers.</h1>
+  <p>We nurture culinary excellence while supporting students financially and professionally, connecting them to real-world opportunities, inspiring impact stories, and a future full of possibilities.</p>
 </div>
 
-<!-- STORIES -->
 <section id="stories">
   <h2>🌟 Impact Stories</h2>
   <div class="grid" id="storiesGrid">
@@ -145,104 +129,121 @@
   </div>
 </section>
 
-<!-- ALERT -->
-<div id="alertMsg"></div>
+<section id="opportunities">
+  <h2>💼 Opportunities & Growth Tips</h2>
+  <div style="display:flex; gap:30px; flex-wrap:wrap;">
+    <div class="jobs">
+      <h3>Available Jobs - <b style="color: green; padding-bottom: 20px;">Apply Now</b></h3>
+      <ul id="jobsList"><li>Loading jobs...</li></ul>
+    </div>
+    <div class="tips">
+      <h3>10 Tips to Apply</h3>
+      <ol>
+        <li>Prepare a clean and professional CV highlighting your skills.</li>
+        <li>Write a personalized cover letter for each application.</li>
+        <li>Research the company before applying.</li>
+        <li>Ensure your hygiene and uniform are perfect for interviews.</li>
+        <li>Practice common culinary interview questions.</li>
+        <li>Showcase a small portfolio of your dishes if possible.</li>
+        <li>Network with previous graduates and chefs in the field.</li>
+        <li>Be punctual and polite during interviews.</li>
+        <li>Follow up politely after submitting your application.</li>
+        <li>Keep learning and improving your skills continuously.</li>
+      </ol>
+    </div>
+  </div>
+  <button class="btn"><a href="./image/Culinary_Arts_Resume.docx" download="">Download Resume</a></button>
+</section>
+
+<section id="contact">
+  <h2>📞 Contact Us</h2>
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="hidden" name="subject" value="New Inquiry from Website">
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
 
 <footer>
   © 2026 AdeaPmd CareerConnect | Empowering Culinary Talent
 </footer>
 
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
-function toggleMenu() {
-  document.getElementById("navLinks").classList.toggle("show");
-}
+(function(){ emailjs.init("ou9kOt9Zz8gVExA4f"); })();
+document.getElementById("contactForm").addEventListener("submit", function(event){
+  event.preventDefault();
+  emailjs.sendForm("service_lkpo65i", "template_9hsek1j", this)
+    .then(() => { alert("Message sent successfully!"); this.reset(); })
+    .catch(error => { alert("Failed to send message."); console.error(error); });
+});
 
-// API BASE
+function toggleMenu() { document.getElementById("navLinks").classList.toggle("show"); }
+
 const API_BASE = "https://adeaadmin.onrender.com";
 
-// SHOW ALERT
-function showAlert(message, success=true){
-    const alertBox = document.getElementById("alertMsg");
-    alertBox.innerText = message;
-    alertBox.style.background = success?"green":"red";
-    alertBox.style.display = "block";
-    setTimeout(()=> alertBox.style.display="none", 3000);
+async function loadStories() {
+  const container = document.getElementById("storiesGrid");
+  container.innerHTML = "<p class='empty'>Loading stories...</p>";
+  try {
+    const res = await fetch(`${API_BASE}/api/posts`);
+    const posts = await res.json();
+    container.innerHTML = "";
+    if(!posts || posts.length===0){ container.innerHTML="<p class='empty'>Impact Stories Coming Soon 🌟😊</p>"; return; }
+
+    posts.reverse().forEach(post => {
+      const card = document.createElement("div");
+      card.className="card";
+      let mediaHTML="";
+      if(post.media){
+        if(post.media.endsWith(".mp4")||post.media.endsWith(".webm")){
+          mediaHTML=`<video controls preload="metadata"><source src="${API_BASE}${post.media}" type="video/mp4"></video>`;
+        } else { mediaHTML=`<img src="${API_BASE}${post.media}" alt="${post.title}">`; }
+      }
+      card.innerHTML=`
+        ${mediaHTML}
+        <h3>${post.title}</h3>
+        <p>${post.content.substring(0,120)}...</p>
+        <div class="meta">${post.type} • ${post.date}</div>
+        <a href="story.html?id=${post.id}">Read More →</a>
+      `;
+      container.appendChild(card);
+    });
+
+  } catch(err){
+    console.error(err);
+    container.innerHTML="<p class='empty'>Failed to load stories.</p>";
+  }
 }
 
-// REMOVE STORY CARD FROM DOM
-function removeStoryFromDOM(storyId){
-    const container = document.getElementById("storiesGrid");
-    const card = Array.from(container.children).find(c => c.querySelector('a')?.href.includes(`id=${storyId}`));
-    if(card) card.remove();
+async function loadJobs() {
+  const container=document.getElementById("jobsList");
+  container.innerHTML="<li>Loading jobs...</li>";
+  try {
+    const res = await fetch(`${API_BASE}/api/jobs`);
+    const jobs = await res.json();
+    container.innerHTML="";
+    if(!jobs || jobs.length===0){ container.innerHTML="<li>No jobs posted yet. Stay tuned 😊</li>"; return; }
+    jobs.forEach(job => {
+      const li=document.createElement("li");
+      li.innerHTML=`<a href="${job.link}" target="_blank">${job.title}</a>`;
+      container.appendChild(li);
+    });
+  } catch(err){ console.error(err); container.innerHTML="<li>Failed to load jobs</li>"; }
 }
 
-// DELETE STORY API
-async function deleteStory(storyId, title){
-    if(!confirm(`Are you sure you want to delete "${title}"?`)) return;
+// Hero carousel
+const hero=document.querySelector(".hero");
+const heroImages=["./image/std.jpg","./image/boys.jpg","./image/pmd.jpg","./image/dorocus.jpg"];
+let i=0;
+function changeHero(){ hero.style.backgroundImage=`url('${heroImages[i]}')`; i=(i+1)%heroImages.length; }
+setInterval(changeHero,6000);
 
-    try {
-        const res = await fetch(`${API_BASE}/api/posts/${storyId}`, { method:'DELETE' });
-        if(res.ok){
-            removeStoryFromDOM(storyId);
-            showAlert(`"${title}" deleted successfully ✅`);
-        } else {
-            showAlert(`Failed to delete "${title}" ❌`, false);
-        }
-    } catch(err){
-        console.error(err);
-        showAlert(`Error deleting "${title}" ❌`, false);
-    }
-}
-
-// LOAD STORIES
-async function loadStories(){
-    const container = document.getElementById("storiesGrid");
-    container.innerHTML = "<p class='empty'>Loading stories...</p>";
-
-    try{
-        const res = await fetch(`${API_BASE}/api/posts`);
-        const posts = await res.json();
-
-        container.innerHTML = "";
-
-        if(!posts || posts.length===0){
-            container.innerHTML = "<p class='empty'>Impact Stories Coming Soon 🌟😊</p>";
-            return;
-        }
-
-        posts.reverse().forEach(post=>{
-            const card = document.createElement("div");
-            card.className = "card";
-
-            let mediaHTML = "";
-            if(post.media){
-                if(post.media.endsWith(".mp4") || post.media.endsWith(".webm")){
-                    mediaHTML = `<video controls preload="metadata"><source src="${API_BASE}${post.media}" type="video/mp4"></video>`;
-                } else {
-                    mediaHTML = `<img src="${API_BASE}${post.media}" alt="${post.title}">`;
-                }
-            }
-
-            card.innerHTML = `
-                ${mediaHTML}
-                <h3>${post.title}</h3>
-                <p>${post.content.substring(0,120)}...</p>
-                <div class="meta">${post.type} • ${post.date}</div>
-                <a href="story.html?id=${post.id}">Read More →</a>
-                <button class="delete-btn" onclick="deleteStory('${post.id}','${post.title}')">Delete</button>
-            `;
-
-            container.appendChild(card);
-        });
-    } catch(err){
-        console.error(err);
-        container.innerHTML = "<p class='empty'>Failed to load stories.</p>";
-    }
-}
-
-// INITIAL LOAD
+// Initial load
 loadStories();
+loadJobs();
 </script>
-
 </body>
 </html>
