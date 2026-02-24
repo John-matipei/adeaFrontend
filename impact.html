@@ -15,16 +15,13 @@
 * { box-sizing: border-box; margin:0; padding:0; }
 body { font-family: "Segoe UI", Arial, sans-serif; background: var(--gray); color: #333; }
 
-/* ===== NAV ===== */
+/* NAV */
 nav {
   background: linear-gradient(90deg, var(--primary), var(--secondary));
   padding: 15px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
 }
 nav .logo { color: #fff; font-size: 24px; font-weight: bold; }
 nav ul { list-style: none; display:flex; gap:25px; }
@@ -113,9 +110,14 @@ footer {
 <script>
 const container = document.getElementById("storiesGrid");
 
-// ✅ FIXED + MATCHES BACKEND
-fetch("http://localhost:4000/api/posts")
-  .then(res => res.json())
+// 🔴 CHANGE THIS TO YOUR REAL BACKEND URL
+const BACKEND_URL = "https://adeaadmin.onrender.com/admin";
+
+fetch(`${BACKEND_URL}/api/posts`)
+  .then(res => {
+    if (!res.ok) throw new Error("Failed to fetch");
+    return res.json();
+  })
   .then(posts => {
     container.innerHTML = "";
 
@@ -129,11 +131,11 @@ fetch("http://localhost:4000/api/posts")
       card.className = "card";
 
       card.innerHTML = `
-        ${post.media ? `<img src="http://localhost:4000${post.media}" alt="Story Image">` : ""}
+        ${post.media ? `<img src="${BACKEND_URL}${post.media}" alt="Story Image">` : ""}
         <div class="card-content">
-          <h3>${post.title}</h3>
-          <p>${post.content.substring(0,150)}...</p>
-          <div class="meta">${post.type} • ${post.date}</div>
+          <h3>${post.title || "Untitled Story"}</h3>
+          <p>${post.content ? post.content.substring(0,150) : ""}...</p>
+          <div class="meta">${post.type || "General"} • ${post.date || ""}</div>
         </div>
       `;
 
