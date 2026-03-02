@@ -198,9 +198,14 @@ async function loadStories() {
       card.className="card";
       let mediaHTML="";
       if(post.media){
-        if(post.media.endsWith(".mp4")||post.media.endsWith(".webm")){
-          mediaHTML=`<video controls preload="metadata"><source src="${API_BASE}${post.media}" type="video/mp4"></video>`;
-        } else { mediaHTML=`<img src="${API_BASE}${post.media}" alt="${post.title}">`; }
+        const ext = post.media.split('.').pop().toLowerCase();
+        if(ext === "mp4" || ext === "webm"){
+          mediaHTML=`<video controls preload="metadata">
+                        <source src="${API_BASE}${post.media}" type="video/${ext}">
+                     </video>`;
+        } else {
+          mediaHTML=`<img src="${API_BASE}${post.media}" alt="${post.title}">`;
+        }
       }
       card.innerHTML=`
         ${mediaHTML}
