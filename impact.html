@@ -16,16 +16,25 @@
 body { font-family: "Segoe UI", Arial, sans-serif; background: var(--gray); color: #333; }
 
 /* NAV */
-nav {
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  padding: 15px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-nav .logo { color: #fff; font-size: 24px; font-weight: bold; }
-nav ul { list-style: none; display:flex; gap:25px; }
-nav ul li a { color:#fff; text-decoration:none; font-weight:600; }
+ nav {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+  }
+  .logo-container { display: flex; align-items: center; gap: 10px; padding: 5px 15px; border-radius: 12px; }
+  .logo-container img { width: 60px; height: 60px; object-fit: contain; border-radius: 20%; }
+  .logo-container .logo { color:#fff; font-size:24px; font-weight:bold; }
+  nav ul { list-style:none; display:flex; gap:25px; }
+  nav ul li a { color:#fff; text-decoration:none; font-weight:600; }
+  nav ul li a:hover { color:#2c3e50; }
+  .hamburger { display:none; flex-direction: column; cursor: pointer; gap:5px; }
+  .hamburger div { width:25px; height:3px; background:#fff; }
 
 /* HERO */
 .hero {
@@ -78,16 +87,31 @@ footer {
   from { opacity:0; transform:translateY(30px); }
   to { opacity:1; transform:translateY(0); }
 }
+
+/* ===== RESPONSIVE ===== */
+  @media (max-width:768px) {
+    .hamburger { display:flex; }
+    nav ul { flex-direction: column; position: absolute; top: 60px; right: 0; background: linear-gradient(10deg, var(--primary), var(--secondary)); width: 200px; padding: 15px; border-radius: 0 0 10px 10px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; z-index: 999; }
+    nav ul.show { max-height: 500px; }
+    nav ul li { margin: 10px 0; }
+    .logo-container .logo { display: none; }
+  }
 </style>
 </head>
 
 <body>
 
 <nav>
-  <div class="logo">AdeaPmd CareerConnect</div>
-  <ul>
+  <div class="logo-container">
+    <img src="./image/image.png" alt="Logo" />
+    <div class="logo">AdeaPmd CareerConnect</div>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()"><div></div><div></div><div></div></div>
+  <ul id="navLinks">
     <li><a href="index.html">Home</a></li>
-    <li><a href="#">Impact Stories</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="impact.html">Impact Stories</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
@@ -108,10 +132,11 @@ footer {
 </footer>
 
 <script>
+  function toggleMenu() { document.getElementById("navLinks").classList.toggle("show"); }
 const container = document.getElementById("storiesGrid");
 
-// 🔴 CHANGE THIS TO YOUR REAL BACKEND URL
-const BACKEND_URL = "https://adeaadmin.onrender.com/admin";
+/* ✅ CORRECT BACKEND URL (FIXED) */
+const BACKEND_URL = "https://adeaadmin.onrender.com";
 
 fetch(`${BACKEND_URL}/api/posts`)
   .then(res => {

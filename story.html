@@ -117,8 +117,10 @@ function toggleMenu() {
   document.getElementById("navLinks").classList.toggle("show");
 }
 
+const API_BASE = "https://adeaadmin.onrender.com";
+
 // ===== LOAD SINGLE STORY =====
-fetch("/api/posts")
+fetch(`${API_BASE}/api/posts`)
   .then(res => res.json())
   .then(posts => {
     const idParam = new URLSearchParams(window.location.search).get("id");
@@ -131,13 +133,16 @@ fetch("/api/posts")
 
     let mediaHTML = "";
     if (post.media) {
+      const mediaUrl = API_BASE + post.media;
+
       if (post.media.endsWith(".mp4") || post.media.endsWith(".webm")) {
-        mediaHTML = `<video controls playsinline>
-                        <source src="${post.media}" type="video/mp4">
-                        Your browser does not support the video tag.
-                     </video>`;
+        mediaHTML = `
+          <video controls playsinline>
+            <source src="${mediaUrl}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>`;
       } else {
-        mediaHTML = `<img src="${post.media}" alt="${post.title}">`;
+        mediaHTML = `<img src="${mediaUrl}" alt="${post.title}">`;
       }
     }
 
